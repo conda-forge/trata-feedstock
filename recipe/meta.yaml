@@ -11,18 +11,18 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - trata = trata.trata:__init__
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
     - poetry
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - scikit-learn
     - numpy
     - scipy
@@ -33,6 +33,7 @@ test:
     - trata
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
 
