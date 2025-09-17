@@ -1,5 +1,6 @@
 {% set name = "trata" %}
-{% set version = "1.1.1" %}
+{% set version = "1.2.0" %}
+{% set python_min = "3.9" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +8,7 @@ package:
 
 source:
   url: https://github.com/LLNL/trata/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 2db82d8c5e7792f05d199d2e7104c1c8b9fdb4b006f6ce3412b67db1f75d6f80
+  sha256: 7fe3d97cba4ed00a12f7ebe750f9e04d27fe1230b44edea10d37b7eabc79fd27
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -18,11 +19,11 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
     - poetry
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - scikit-learn
     - numpy
     - scipy
@@ -32,6 +33,7 @@ test:
   imports:
     - trata
   requires:
+    - python {{ python_min }}
     - pip
   commands:
     - pip check
