@@ -1,5 +1,6 @@
 {% set name = "trata" %}
 {% set version = "1.2.0" %}
+{% set python_min = "3.9" %}
 
 package:
   name: {{ name|lower }}
@@ -18,11 +19,11 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
     - poetry
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - scikit-learn
     - numpy
     - scipy
@@ -32,6 +33,7 @@ test:
   imports:
     - trata
   requires:
+    - python {{ python_min }}
     - pip
   commands:
     - pip check
