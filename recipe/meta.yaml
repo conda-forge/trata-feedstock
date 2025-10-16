@@ -1,5 +1,5 @@
 {% set name = "trata" %}
-{% set version = "1.2.0" %}
+{% set version = "1.2.1" %}
 {% set python_min = "3.9" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/LLNL/trata/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 7fe3d97cba4ed00a12f7ebe750f9e04d27fe1230b44edea10d37b7eabc79fd27
+  sha256: 210c00006bee912855248eeb0eddef5f97185ba6d4248284b4fa05e67e634a47
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
